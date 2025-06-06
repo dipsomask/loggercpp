@@ -4,12 +4,13 @@ namespace loggercpp {
 
 namespace types {
 
+enum class LogLevel { Debug, Realize };
+
 enum class MessageType {
 
-  Info = 1,
+  Info,
   Warning,
-  Error,
-  Basic = Info
+  Error
 
 };
 

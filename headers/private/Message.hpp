@@ -1,5 +1,5 @@
 #include <chrono>
-#include <string>
+#include <functional>
 
 #include "IMessage.hpp"
 #include "Types.hpp"
@@ -16,12 +16,14 @@ public:
       std::function<void()> callback = []() { return; });
   ~Message() = default;
 
+  Message() = delete;
   Message(const Message &message) = delete;
   Message(Message &message) = delete;
   Message operator=(const Message &message) = delete;
   Message operator=(Message &message) = delete;
 
-  void setCallback(std::function<void()> callback) override;
+  std::string toString() const override;
+  Message &operator<<(std::string) override;
 
 private:
   std::chrono::system_clock::time_point p_dataTime;
